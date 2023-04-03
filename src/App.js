@@ -1,9 +1,9 @@
-import './App.css';
-
+import React from 'react';
+import TodoComponent from './components/TodoComponent';
 function App() {
   return (
     <div >
-      Hello Todo
+      <TodoComponent/>
     </div>
   );
 }
