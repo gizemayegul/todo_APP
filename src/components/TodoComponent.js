@@ -47,11 +47,9 @@ const TodoComponent = () => {
 
     const completedTodos = todos.filter((todo => todo.completed === true));
     const notCompletedTodos = todos.filter((todo => todo.completed === false));
-    const recentlyDeleted = todos.filter((todo) => todo.id !== todo.id)
 
     console.log(todos, 'hi',)
     console.log(completedTodos, 'completed')
-    console.log(recentlyDeleted,'deleted')
 
     return (
 
