@@ -11,11 +11,13 @@ const reducer = (state, action) => {
         case "TOOGLE":
             return state.map((todo) => {
                 if (todo.id === action.id) {
-                    return { ...todo, completed: !todo.completed };
+                    return { ...todo, completed: !todo.completed }
                 } else {
                     return todo;
                 }
             })
+        // case "COMPLETED_TODOS":
+        //     return{...state,completedTodos: state.filter(ctodo=>ctodo.completed ===true)}
         default:
             return state;
     }
@@ -38,12 +40,17 @@ const TodoComponent = () => {
         dispatch({ type: "TOOGLE", id: todo.id })
     }
 
-    console.log(todos, 'hi', todos.completed)
+    const completedTodos = todos.filter((todo => todo.completed === true));
+    const notCompletedTodos = todos.filter((todo => todo.completed === false));
+
+    console.log(todos, 'hi',)
+    console.log(completedTodos, 'completed')
+
     return (
 
         <div>
             <form onSubmit={handleAdd}>
-                <label htmlFor='text'>New Todo</label>
+                <label htmlFor='new Todo'>New Todo</label>
                 <input
                     placeholder='typing...'
                     onChange={handleNewTodo}
@@ -54,14 +61,18 @@ const TodoComponent = () => {
                 <button type="submit" >Submit</button>
             </form>
             <div>
-                <ul>
-                    {todos.map(todo => (
+                <label htmlFor='todo-list'>TODO LIST</label>
+                <ul
+                    id="todo-list"
+                >
+                    {notCompletedTodos.map(todo => (
                         <li
                             key={todo.id}
-                            style={{ listStyle: 'none',
+                            style={{
+                                listStyle: 'none',
                                 textDecoration: todo.completed ? 'line-through' : 'none',
                             }}
-                            
+
                         >
                             <label htmlFor='item1'>
                                 <input
@@ -75,6 +86,34 @@ const TodoComponent = () => {
                     ))}
                 </ul>
             </div>
+            <div>
+                <label htmlFor='todo-list'>COMPLETED LIST</label>
+                <ul
+                    id="todo-list"
+                >
+                    {completedTodos.map(todo => (
+                        <li
+                            key={todo.id}
+                            style={{
+                                listStyle: 'none',
+                                textDecoration: todo.completed ? 'line-through' : 'none',
+                            }}
+
+                        >
+                            <label htmlFor='item1'>
+                                <input
+                                    type='checkbox'
+                                    checked={todo.completed}
+                                    onChange={() => handleComplete(todo)}
+                                />
+                                {todo.name}
+                            </label>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+
+
 
 
         </div>
