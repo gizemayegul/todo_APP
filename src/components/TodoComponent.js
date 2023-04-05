@@ -1,7 +1,8 @@
 import React from 'react';
 import { useReducer, useState } from "react";
 import { v4 as uuid } from 'uuid';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 const initialTodos = [];
 const reducer = (state, action) => {
@@ -16,8 +17,8 @@ const reducer = (state, action) => {
                     return todo;
                 }
             })
-        // case "COMPLETED_TODOS":
-        //     return{...state,completedTodos: state.filter(ctodo=>ctodo.completed ===true)}
+        case "DELETE_TODO":
+            return state.filter((todo) => todo.id !== action.id);
         default:
             return state;
     }
@@ -39,12 +40,18 @@ const TodoComponent = () => {
     const handleComplete = (todo) => {
         dispatch({ type: "TOOGLE", id: todo.id })
     }
+    const handleDelete = (todo) => {
+        dispatch({ type: "DELETE_TODO", id: todo.id });
+    }
+
 
     const completedTodos = todos.filter((todo => todo.completed === true));
     const notCompletedTodos = todos.filter((todo => todo.completed === false));
+    const recentlyDeleted = todos.filter((todo) => todo.id !== todo.id)
 
     console.log(todos, 'hi',)
     console.log(completedTodos, 'completed')
+    console.log(recentlyDeleted,'deleted')
 
     return (
 
@@ -60,18 +67,22 @@ const TodoComponent = () => {
                 ></input>
                 <button type="submit" >Submit</button>
             </form>
-            <div>
+            <div >
                 <label htmlFor='todo-list'>TODO LIST</label>
                 <ul
                     id="todo-list"
+                    className='list-items'
+
                 >
                     {notCompletedTodos.map(todo => (
                         <li
+                            className='todos-list'
                             key={todo.id}
                             style={{
                                 listStyle: 'none',
                                 textDecoration: todo.completed ? 'line-through' : 'none',
                             }}
+
 
                         >
                             <label htmlFor='item1'>
@@ -82,17 +93,24 @@ const TodoComponent = () => {
                                 />
                                 {todo.name}
                             </label>
+                            <span onClick={() => handleDelete(todo)}><FontAwesomeIcon className='close-icon' icon={faTrash} /></span>
+
                         </li>
                     ))}
+
                 </ul>
+
+
             </div>
             <div>
                 <label htmlFor='todo-list'>COMPLETED LIST</label>
                 <ul
                     id="todo-list"
+                    className='list-items'
                 >
                     {completedTodos.map(todo => (
                         <li
+                            className='todos-list'
                             key={todo.id}
                             style={{
                                 listStyle: 'none',
@@ -100,7 +118,7 @@ const TodoComponent = () => {
                             }}
 
                         >
-                            <label htmlFor='item1'>
+                            <label htmlFor='items'>
                                 <input
                                     type='checkbox'
                                     checked={todo.completed}
@@ -108,14 +126,11 @@ const TodoComponent = () => {
                                 />
                                 {todo.name}
                             </label>
+                            <span onClick={() => handleDelete(todo)}><FontAwesomeIcon className='close-icon' icon={faTrash} /></span>
                         </li>
                     ))}
                 </ul>
             </div>
-
-
-
-
         </div>
     );
 };

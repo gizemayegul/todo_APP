@@ -11,3 +11,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.todos-list{
+  background-color: beige;
+  border: 1px solid black;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+}
+
+.list-items :hover {
+  background-color:aquamarine;
+}
+
+.close-icon{
+  justify-items: center;
+  
+}
