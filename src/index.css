@@ -12,16 +12,15 @@ code {
     monospace;
 }
 
-
-.todos-list{
-  background-color: beige;
-  border: 1px solid black;
-  padding: 1rem;
-  border-radius: 0.5rem;
+.header{
   display: flex;
+  align-items: center;
+  background-color: aqua;
+  justify-content: space-around;
 }
-
-.list-items :hover {
-  background-color:aquamarine;
+.footer{
+  display: flex;
+  align-items: center;
+  background-color: salmon;
+  justify-content: space-around;
 }
-
