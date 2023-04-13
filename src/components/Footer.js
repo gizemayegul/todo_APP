@@ -4,7 +4,7 @@ const Footer = () => {
     return (
         <>
             <footer className='footer'>
-                <h2>Gizem AS</h2>
+            <a href="https://github.com/gizemayegul">Visit my github</a>
             </footer>
 
         </>

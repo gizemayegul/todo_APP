@@ -96,7 +96,9 @@ code {
   padding: 20px;
   color: #FFFFFF;
 }
-
+filter-button :hover{
+  box-shadow:#FFFFFF
+}
 .content {
   position: relative;
   flex-grow: 1;
@@ -152,5 +154,4 @@ code {
   justify-content: space-around;
   min-height: 10vh;
   border: 0.25rem #9800F4 solid;
-
 }
