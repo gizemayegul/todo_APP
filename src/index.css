@@ -1,5 +1,7 @@
 body {
-  margin: 0;
+  margin: 5rem;
+  padding: 0;
+  height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -12,15 +14,132 @@ code {
     monospace;
 }
 
-.header{
+.header {
   display: flex;
+  box-sizing: border-box;
+  border: 3px #9800F4 solid;
   align-items: center;
-  background-color: aqua;
   justify-content: space-around;
+  padding: 20px;
+  min-height: 5vh;
 }
-.footer{
+
+.container {
+  display: flex;
+  height: 100vh;
+  margin-top: 1rem;
+}
+
+.sidebar {
+  width: 25%;
+  min-height: 10vh;
+  box-sizing: border-box;
+  border: 0.25rem #9800F4 solid;
+  justify-content: space-around;
+  align-items: center;
+
+}
+
+.filter-button {
+  background: #9800F4;
+  box-sizing: border-box;
+  border: 1px solid #000000;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 2rem;
+  width: 15rem;
+  height: 4rem;
+  margin: 0.5rem;
+}
+
+.filter-buttontext {
+  font-family: 'Karla';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 23px;
+  padding: 20px;
+  color: #FFFFFF;
+}
+
+.content {
+  position: relative;
+  flex-grow: 1;
+  min-height: 10vh;
+  border: 0.25rem #9800F4 solid;
+  margin-left: 0.25rem;
+  display: inline-flexbox;
+
+}
+
+.input-button {
+  position: absolute;
+  width: 4rem;
+  height: 4rem;
+  background: #9800F4;
+  border: 2px solid #9800F4;
+  border-radius: 5rem;
+  top: 0.25rem;
+  right: 0;
+  bottom: 0;
+}
+
+.plus-icon {
+  width: 1rem;
+  height: 2rem;
+  color: #FFFFFF;
+  font-weight: 700;
+
+}
+
+.input-field {
+  margin-top: 0.25rem;
+  background: #FFFFFF;
+  border: 0.25rem solid #9800F4;
+  border-radius: 30px;
+  width: 61rem;
+  height: 3.5rem;
+
+}
+
+
+.footer {
+  margin-top: 1rem;
   display: flex;
   align-items: center;
-  background-color: salmon;
   justify-content: space-around;
+  min-height: 10vh;
+  border: 0.25rem #9800F4 solid;
+
+}
+
+
+@media only screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .input-field {
+    width: 50%;
+  }
+
+  .todo-list
+
+  .sidebar,
+  .content {
+    width: 100%;
+    max-height: none;
+  }
+
+  .filter-button {
+    border-radius: 2rem;
+    width: 10rem;
+    height: 2rem;
+    margin: 0.w5rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .input-field {
+    width: 33.33%;
+  }
 }
