@@ -27,24 +27,22 @@ const TodoComponent = (props) => {
 
             </aside>
             <main className='content'>
-                <div className='input-container'>
-                    <form onSubmit={props.handleAdd}>
-                        <input
-                            className='input-field'
-                            placeholder='typing...'
-                            onChange={props.handleNewTodo}
-                            value={props.item}
-                            type='text'
-                            id='text'
-                        />
-                        <label htmlFor='text'></label>
-                        <button className='input-button' type="submit" >
-                            <span className='plus-icon'>+</span>
-                        </button>
-                    </form>
-                </div>
-                {props.showTodo && (
-                    <div >
+                {props.showTodo && (<div className='input-container'>
+                     <form onSubmit={props.handleAdd}>
+                     <input
+                         className='input-field'
+                         placeholder='typing...'
+                         onChange={props.handleNewTodo}
+                         value={props.item}
+                         type='text'
+                         id='text'
+                     />
+                     <label htmlFor='text'></label>
+                     <button className='input-button' type="submit" >
+                         <span className='plus-icon'>+</span>
+                     </button>
+                 </form>
+                    <div>
                         <label class="todo-label" htmlFor='todo-list'>TODO LIST</label>
                         <ul className='list-holder'
                         >
@@ -73,7 +71,7 @@ const TodoComponent = (props) => {
                             ))}
                         </ul>
                     </div>
-                )}
+                    </div>)}
                 {props.showCompleted && (
                     <div>
                         <label class="todo-label" htmlFor='todo-list'>COMPLETED LIST</label>
