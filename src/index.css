@@ -1,5 +1,5 @@
 body {
-  margin: 5rem;
+  margin: 0;
   padding: 0;
   height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -7,6 +7,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
 }
 
 code {
@@ -17,7 +18,6 @@ code {
 .header {
   display: flex;
   box-sizing: border-box;
-  border: 3px #9800F4 solid;
   align-items: center;
   justify-content: space-around;
   padding: 20px;
@@ -30,26 +30,62 @@ code {
   margin-top: 1rem;
 }
 
+
 .sidebar {
+  display: flex;
   width: 25%;
   min-height: 10vh;
-  box-sizing: border-box;
-  border: 0.25rem #9800F4 solid;
-  justify-content: space-around;
-  align-items: center;
+}
+
+.flag-icon{
 
 }
 
 .filter-button {
   background: #9800F4;
-  box-sizing: border-box;
   border: 1px solid #000000;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 2rem;
-  width: 15rem;
-  height: 4rem;
-  margin: 0.5rem;
+  width: 50%;
+  height: auto;
+  padding: 1rem;
 }
+
+
+
+.todo-list{
+ color:black;
+ list-style: none;
+ font-size: 20px;
+ font-family: sans-serif;
+ box-sizing: border-box;
+ border: 1px solid #000000;
+ width: 80% ;
+ border-radius: 1rem;
+ height: auto;
+ padding: 1rem;
+ background: #bed077;
+ overflow:scroll;
+}
+
+.close-icon{
+  color: #9800F4;
+}
+.flag-icon{
+  color: red;
+}
+.icons{
+  margin-left: 0%;
+}
+.position-icon{
+  margin-left: 1%;
+  float: right;
+}
+.flag-position{
+  float: right;
+  
+}
+
 
 .filter-buttontext {
   font-family: 'Karla';
@@ -67,20 +103,16 @@ code {
   min-height: 10vh;
   border: 0.25rem #9800F4 solid;
   margin-left: 0.25rem;
-  display: inline-flexbox;
 
 }
 
 .input-button {
-  position: absolute;
-  width: 4rem;
-  height: 4rem;
   background: #9800F4;
   border: 2px solid #9800F4;
   border-radius: 5rem;
-  top: 0.25rem;
-  right: 0;
-  bottom: 0;
+  height: 3.8rem;
+  width: 3.8rem;
+  
 }
 
 .plus-icon {
@@ -92,15 +124,26 @@ code {
 }
 
 .input-field {
-  margin-top: 0.25rem;
+  margin-top: 2rem;
   background: #FFFFFF;
-  border: 0.25rem solid #9800F4;
+  border: 2x solid #9800F4;
   border-radius: 30px;
-  width: 61rem;
-  height: 3.5rem;
-
+  height: 2rem;
+  width: 80%;
+  padding: 1rem;
+}
+::placeholder {
+  color: gray;
+  font-style: italic;
+  font-size: 20px;
 }
 
+.todo-label{
+  font-size: 25px;
+  font-weight: 700;
+  color: palevioletred;
+
+}
 
 .footer {
   margin-top: 1rem;
@@ -110,36 +153,4 @@ code {
   min-height: 10vh;
   border: 0.25rem #9800F4 solid;
 
-}
-
-
-@media only screen and (max-width: 768px) {
-  .container {
-    flex-direction: column;
-  }
-
-  .input-field {
-    width: 50%;
-  }
-
-  .todo-list
-
-  .sidebar,
-  .content {
-    width: 100%;
-    max-height: none;
-  }
-
-  .filter-button {
-    border-radius: 2rem;
-    width: 10rem;
-    height: 2rem;
-    margin: 0.w5rem;
-  }
-}
-
-@media (min-width: 1200px) {
-  .input-field {
-    width: 33.33%;
-  }
 }

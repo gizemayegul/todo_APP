@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faFlag } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -10,15 +10,12 @@ const TodoComponent = (props) => {
     return (
         <div className='container'>
             <aside className='sidebar'>
-                <h1>
-                    Sidebar
-                </h1>
                 <div>
                     <button className='filter-button'>
                         <span className='filter-buttontext'>My day </span>
                     </button>
-                    <button style={{background:"rgba(191, 89, 89, 1)"}}
-                     className='filter-button'>
+                    <button style={{ background: "rgba(191, 89, 89, 1)" }}
+                        className='filter-button'>
                         <span className='filter-buttontext'>Important</span>
                     </button>
                     <button className='filter-button' >
@@ -27,32 +24,30 @@ const TodoComponent = (props) => {
 
             </aside>
             <main className='content'>
-                <form onSubmit={props.handleAdd}>
-                    <input
-                        className='input-field'
-                        placeholder='typing...'
-                        onChange={props.handleNewTodo}
-                        value={props.item}
-                        type='text'
-                        id='text'
-                    ></input>
-                    <button className='input-button' type="submit" >
-                        <span className='plus-icon'>+</span>
+                <div className='input-container'>
+                    <form onSubmit={props.handleAdd}>
+                        <input
+                            className='input-field'
+                            placeholder='typing...'
+                            onChange={props.handleNewTodo}
+                            value={props.item}
+                            type='text'
+                            id='text'
+                        />
+                        <label htmlFor='text'></label>
+                        <button className='input-button' type="submit" >
+                            <span className='plus-icon'>+</span>
                         </button>
-                </form>
+                    </form>
+                </div>
                 <div >
-                    <label htmlFor='todo-list'>TODO LIST</label>
-                    <ul
-
+                    <label class="todo-label" htmlFor='todo-list'>TODO LIST</label>
+                    <ul className='list-holder'
                     >
                         {props.notCompletedTodos.map(todo => (
                             <li
                                 className='todo-list'
                                 key={todo.id}
-                                style={{
-                                    listStyle: 'none',
-                                    textDecoration: todo.completed ? 'line-through' : 'none',
-                                }}
                             >
                                 <label htmlFor='item1'>
                                     <input
@@ -62,24 +57,35 @@ const TodoComponent = (props) => {
                                     />
                                     {todo.name}
                                 </label>
-                                <span onClick={() => props.handleDelete(todo)}><FontAwesomeIcon className='close-icon' icon={faTrash} /></span>
+                                <span className='icons'>
+                                    <span className='position-icon' onClick={() => props.handleDelete(todo)}>
+                                        <FontAwesomeIcon className='close-icon' icon={faTrash} />
+                                    </span>
+                                    <span class="flag-position">
+                                        <FontAwesomeIcon className='flag-icon' icon={faFlag} />
+                                    </span>
+                                </span>
+
+
+
+
 
                             </li>
                         ))}
                     </ul>
                 </div>
                 <div>
-                    <label htmlFor='todo-list'>COMPLETED LIST</label>
+                    <label class="todo-label" htmlFor='todo-list'>COMPLETED LIST</label>
                     <ul
                         id="todo-list"
+                        className='list-holder'
 
                     >
                         {props.completedTodos.map(todo => (
                             <li
-
+                                className='todo-list'
                                 key={todo.id}
                                 style={{
-                                    listStyle: 'none',
                                     textDecoration: todo.completed ? 'line-through' : 'none',
                                 }}
 
@@ -93,7 +99,14 @@ const TodoComponent = (props) => {
                                     />
                                     {todo.name}
                                 </label>
-                                <span onClick={() => props.handleDelete(todo)}><FontAwesomeIcon className='close-icon' icon={faTrash} /></span>
+                                <span className='icons'>
+                                    <span className='position-icon' onClick={() => props.handleDelete(todo)}>
+                                        <FontAwesomeIcon className='close-icon' icon={faTrash} />
+                                    </span>
+                                    <span class="flag-position">
+                                        <FontAwesomeIcon className='flag-icon' icon={faFlag} />
+                                    </span>
+                                </span>
                             </li>
                         ))}
                     </ul>
