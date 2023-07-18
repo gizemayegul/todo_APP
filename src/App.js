@@ -56,7 +56,6 @@ function App() {
     setShowCompleted(true)
     setImportant(false)
     setShowTodo(false)
-    
   }
 
   const handleShowAll = () =>{
@@ -75,8 +74,6 @@ function App() {
     setItem(e.target.value)
   }
 
-
-
   const handleComplete = (todo) => {
     dispatch({ type: "TOOGLE", id: todo.id })
   }
@@ -92,7 +89,7 @@ function App() {
   const notCompletedTodos = todos.filter((todo => todo.completed === false && todo.flag === false));
   const importantTodos = todos.filter((todo => todo.flag === true));
   return (
-    <div >
+    <div className='App' >
       <Header />
       <TodoComponent {...{
         handleAdd,
@@ -113,7 +110,7 @@ function App() {
         handleShowAll
       }}
       />
-      <Footer />
+
 
     </div>
   );
