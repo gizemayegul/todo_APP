@@ -2,6 +2,8 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
+  width: 100%;
+  background-color: #200441;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -15,87 +17,170 @@ code {
     monospace;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  background-color: #200441;
-  min-width: 320px;
-  min-height: 100vh;
-  overflow-x: hidden;
-}
 
-#root {
-  max-width: 1280px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-@media (max-width: 480px) {
-  #root {
-    padding-top: 0;
-  }
-}
-
-.App {
+.header{
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  gap: 1rem;
-
-  @media (min-width:360px) {
-    gap: 2rem;
-  }
 }
 
-.main {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-}
-
-.lists {
-  display: flex;
-}
-
-.list {
-  border-radius: 8px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  background-color: #200441;
+.header h1{
   color: aliceblue;
+}
+
+.app-wrapper {
+  
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+
+}
+
+.filter-buttons{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1rem;
+}
+
+.filter-buttons button{
+  padding: 0.5rem;
+  margin: 1rem;
+  border-radius: 1rem;
+  font-size: 1rem;
+  width: 16vw;
+  height: 8vh;
+  font-size: 1.5rem;
+  flex-wrap: wrap;
+  /* Use word-wrap or overflow-wrap to wrap text */
+  word-wrap: break-word; /* Use 'break-word' for non-standard word breaking behavior */
+  /* or */
+  overflow-wrap: break-word;
+  background-color: #200441;
+  color: purple;
+  font-weight: bolder;
+ 
+  
+}
+
+
+
+
+
+.input-container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+}
+
+.input-addtodo{
+  width: 70vw;
+  height: 8vh;
+  border-radius: 1rem;
+  flex-wrap: wrap;
+  /* Use word-wrap or overflow-wrap to wrap text */
+  word-wrap: break-word; /* Use 'break-word' for non-standard word breaking behavior */
+  /* or */
+  overflow-wrap: break-word;
+  background-color: #200441;
+  color: white;
+  font-weight: bolder;
+  font-size: 1.5rem;
+
+
+}
+
+.input-button{
+  width: 6vw;
+  height:8vh;
+  font-size: 1rem;
+  border-radius: 1rem;
+  margin: 1rem;
+  background-color: #200441;
+  color: purple;
+  font-weight: bolder;
+}
+
+.todo-lists{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+
+.todo-container{
+  margin: 0;
+  padding: 0;
+  
+}
+
+.todo{
+  display: flex;
+  color: white;
+  align-items: center;
+  justify-content: space-between;
+  width: 75vw;
+  height: 4vh;
+  border: 1px solid;
+  list-style: none;
+  border-radius: 1rem;
   padding: 1rem;
-  height: 2rem;
-  width: 1000px;
-
-
-}
-
-@media (max-width: 768px) {
-  .list {
-    width: 100%;
-    width: 600px;
-  }
-
-
-}
-
-@media (max-width: 480px) {
-  .list {
-    flex-direction: column;
-    width: 100%;
-    
-  }
+  margin: 0.5rem;
+  box-shadow: -4px -4px 5px #200441, 4px 4px 5px #000000;
 }
 
 
-  .list:hover {
-    background-color: #4b0a97;
+.todo:hover, .filter-buttons button:hover, .input-addtodo:hover,.input-button:hover{
     scale: 1.04;
     transition: 0ms;
-    border-left: 4px solid purple
+}
+
+.icons-flag{
+  margin: 1rem;
+  color: red;
+}
+
+.icons-delete{
+  margin: 1rem;
+  color: purple;
+}
+
+
+@media (max-width:768px) {
+  .filter-buttons {
+    align-items: flex-start;
   }
+
+  .filter-buttons button{
+    margin:0.25rem;
+    padding: 0.2rem;
+    width: 22vw;
+    height: 5vh;
+    font-size: 0.8rem;
+    
+    
+  }
+  .input-addtodo{
+    height: 5vh;
+    padding: 0.25rem;
+   
+
+  }
+  .input-button{
+    font-size: 0.8rem;
+    width: 10vw;
+    height: 5vh;
+    margin: 0;
+    font-weight: bolder;
+    border-radius: 50%;
+    
+  }
+
+  .icons-delete,.icons-flag{
+    margin: 0.5rem;
+  }
+}
+

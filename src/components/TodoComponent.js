@@ -8,52 +8,86 @@ import { faTrash, faFlag } from '@fortawesome/free-solid-svg-icons';
 const TodoComponent = (props) => {
 
     return (
-        <div className="todolist">
-            <aside>
-                <div>
-                    <button onClick={props.handleShowAll}>
-                        <span >All </span>
-                    </button>
-                    <button onClick={props.handleShowTodo} >
-                        <span >Todo </span>
-                    </button>
-                    <button onClick={props.handleShowImportant} style={{ background: "rgba(191, 89, 89, 1)" }}
-                    >
-                        <span >Important</span>
-                    </button>
-                    <button onClick={props.handleShowCompleted}  >
-                        <span >Completed</span></button>
-                </div>
 
-            </aside>
-            <main className='main'>
-                {props.showTodo && (<div>
-                    <form onSubmit={props.handleAdd}>
-                        <input
-                            className='input-field'
-                            placeholder='typing...'
-                            onChange={props.handleNewTodo}
-                            value={props.item}
-                            type='text'
-                            id='text'
-                        />
-                        <label htmlFor='text'></label>
-                        <button type="submit" >
-                            <span>+</span>
-                        </button>
-                    </form>
+        <div className='app-wrapper'>
+            <div className='filter-buttons'>
+                <button onClick={props.handleShowTodo} >
+                    <span >Todo </span>
+                </button>
+                <button onClick={props.handleShowImportant} style={{ background: "rgba(191, 89, 89, 1)" }}
+                >
+                    <span >Important</span>
+                </button>
+                <button onClick={props.handleShowCompleted}  >
+                    <span >Completed</span></button>
+            </div>
+
+
+            <div className='input-container'>
+                {props.showTodo && (
+                    <div>
+                        <form onSubmit={props.handleAdd}>
+                            <input
+                                className='input-addtodo'
+                                onChange={props.handleNewTodo}
+                                value={props.item}
+                                type='text'
+                                id='text'
+                            />
+                            <label htmlFor='text'></label>
+                            <button className='input-button' type="submit" >
+                                Add Todo
+                            </button>
+                        </form>
+                        <div>
+                            <div>
+                                <h2 style={{ color: 'white' }}>TODO LIST</h2>
+                            </div>
+                            <div className='todo-lists'>
+                                <ul className='todo-container'>
+                                    {props.notCompletedTodos.map(todo => (
+                                        <li className='todo'
+                                            key={todo.id}
+                                        >
+                                            <label htmlFor='item1'>
+                                                <input
+                                                    type='checkbox'
+                                                    checked={todo.completed}
+                                                    onChange={() => props.handleComplete(todo)}
+                                                />
+                                                {todo.name}
+                                            </label>
+                                            <span >
+                                                <span onClick={() => props.handleDelete(todo)}>
+                                                    <FontAwesomeIcon icon={faTrash} className='icons-delete' />
+                                                </span>
+                                                <span onClick={() => props.handleFlag(todo)}>
+                                                    <FontAwesomeIcon icon={faFlag} className='icons-flag' />
+                                                </span>
+
+                                            </span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>)}
+                {props.showCompleted && (
                     <div>
                         <div>
-                            <h2 style={{color:'white'}}>TODO LIST</h2>
+                            <h2 style={{ color: 'white' }}>COMPLETED</h2>
                         </div>
-                        <div className='lists'>
-                            <ul>
-                                {props.notCompletedTodos.map(todo => (
-                                    <li className='list'
+                        <div className='todo-lists'>
+                            <ul className='todo-container' >
+                                {props.completedTodos.map(todo => (
+                                    <li 
+                                        className='todo'
                                         key={todo.id}
                                     >
-                                        <label htmlFor='item1'>
+                                        <label htmlFor='items'>
                                             <input
+
                                                 type='checkbox'
                                                 checked={todo.completed}
                                                 onChange={() => props.handleComplete(todo)}
@@ -62,10 +96,10 @@ const TodoComponent = (props) => {
                                         </label>
                                         <span >
                                             <span onClick={() => props.handleDelete(todo)}>
-                                                <FontAwesomeIcon icon={faTrash} />
+                                                <FontAwesomeIcon icon={faTrash} className='icons-delete' />
                                             </span>
-                                            <span onClick={() => props.handleFlag(todo)}>
-                                                <FontAwesomeIcon icon={faFlag} />
+                                            <span >
+                                                <FontAwesomeIcon onClick={() => props.handleFlag(todo)} icon={faFlag} className='icons-flag' />
                                             </span>
 
                                         </span>
@@ -73,89 +107,48 @@ const TodoComponent = (props) => {
                                 ))}
                             </ul>
                         </div>
-
-                    </div>
-                </div>)}
-                {props.showCompleted && (
-                    <div>
-                        <label class="todo-label" htmlFor='todo-list'>COMPLETED LIST</label>
-                        <ul
-                            id="todo-list"
-
-
-                        >
-                            {props.completedTodos.map(todo => (
-                                <li
-
-                                    key={todo.id}
-                                    style={{
-                                        textDecoration: todo.completed ? 'line-through' : 'none',
-                                    }}
-
-                                >
-                                    <label htmlFor='items'>
-                                        <input
-
-                                            type='checkbox'
-                                            checked={todo.completed}
-                                            onChange={() => props.handleComplete(todo)}
-                                        />
-                                        {todo.name}
-                                    </label>
-                                    <span >
-                                        <span onClick={() => props.handleDelete(todo)}>
-                                            <FontAwesomeIcon icon={faTrash} />
-                                        </span>
-                                        <span >
-                                            <FontAwesomeIcon onClick={() => props.handleFlag(todo)} icon={faFlag} />
-                                        </span>
-
-                                    </span>
-                                </li>
-                            ))}
-                        </ul>
                     </div>
                 )}
                 {props.important && (
                     <div>
-                        <label class="todo-label" htmlFor='todo-list'>IMPORTANT LIST</label>
-                        <ul
-                            id="todo-list"
+                        <div>
+                            <h2 style={{ color: 'white' }}>IMPORTANT LIST</h2>
+                        </div>
+                        <div className='todo-lists'>
+                            <ul className='todo-container'
+
+                            >
+                                {props.importantTodos.map(todo => (
+                                    <li className='todo'
+                                        key={todo.id}
 
 
-                        >
-                            {props.importantTodos.map(todo => (
-                                <li
-                                    key={todo.id}
-                                    style={{
-                                        textDecoration: todo.completed ? 'line-through' : 'none',
-                                    }}
+                                    >
+                                        <label htmlFor='items'>
+                                            <input
 
-                                >
-                                    <label htmlFor='items'>
-                                        <input
-
-                                            type='checkbox'
-                                            checked={todo.completed}
-                                            onChange={() => props.handleComplete(todo)}
-                                        />
-                                        {todo.name}
-                                    </label>
-                                    <span >
-                                        <span onClick={() => props.handleDelete(todo)}>
-                                            <FontAwesomeIcon icon={faTrash} />
-                                        </span>
+                                                type='checkbox'
+                                                checked={todo.completed}
+                                                onChange={() => props.handleComplete(todo)}
+                                            />
+                                            {todo.name}
+                                        </label>
                                         <span >
-                                            <FontAwesomeIcon onClick={() => props.handleFlag(todo)} className='flag-icon' icon={faFlag} />
-                                        </span>
+                                            <span onClick={() => props.handleDelete(todo)}>
+                                                <FontAwesomeIcon icon={faTrash} className='icons-delete' />
+                                            </span>
+                                            <span >
+                                                <FontAwesomeIcon onClick={() => props.handleFlag(todo)} className='icons-flag' icon={faFlag} />
+                                            </span>
 
-                                    </span>
-                                </li>
-                            ))}
-                        </ul>
+                                        </span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                     </div>
                 )}
-            </main>
+            </div>
 
         </div>
     );

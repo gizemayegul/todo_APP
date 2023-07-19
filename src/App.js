@@ -1,7 +1,6 @@
 import React from 'react';
 import TodoComponent from './components/TodoComponent';
 import Header from './components/Header';
-import Footer from './components/Footer';
 import { useReducer, useState } from "react";
 import { v4 as uuid } from 'uuid';
 
@@ -66,9 +65,14 @@ function App() {
 
   const handleAdd = (e) => {
     e.preventDefault();
-    dispatch({ type: "ADD", payload: item })
-    setItem('')
-  }
+    if (item.trim() === '') {
+      // If the input field is empty or contains only whitespace, do nothing
+      return;
+    }
+  
+    dispatch({ type: "ADD", payload: item });
+    setItem('');
+  };
   const handleNewTodo = (e) => {
     e.preventDefault();
     setItem(e.target.value)
@@ -85,7 +89,7 @@ function App() {
     dispatch({ type: "FLAG", id: todo.id })
   }
 
-  const completedTodos = todos.filter((todo => todo.completed === true));
+  const completedTodos = todos.filter((todo) => todo.completed && !todo.flag);
   const notCompletedTodos = todos.filter((todo => todo.completed === false && todo.flag === false));
   const importantTodos = todos.filter((todo => todo.flag === true));
   return (
