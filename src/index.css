@@ -75,6 +75,12 @@ code {
   
 }
 
+.form{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
 .input-addtodo{
   width: 70vw;
   height: 8vh;
@@ -167,23 +173,21 @@ code {
   .form{
     display: flex;
     align-content: center;
-    justify-content: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    
   }
-  .input-addtodo{
-    width: 70%;
-    padding: 0.25rem;
-    height: 6vh;
-   
 
+  .input-addtodo{
+    width: 100%;
   }
   .input-button{
-    font-size: 0.8rem;
-    width: 20%;
-    height: 6vh;
-    margin-left: 0;
-    font-weight: bolder;
-
-    
+    width: 50%;
+    margin: 0;
+    padding: 0;
+    height: 5vh;
+    margin-left: 25%;
+    margin-right: 25%;
   }
 
   .icons-delete,.icons-flag{

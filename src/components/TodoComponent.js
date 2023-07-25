@@ -26,7 +26,7 @@ const TodoComponent = (props) => {
             <div className='input-container'>
                 {props.showTodo && (
                     <div>
-                        <form  onSubmit={props.handleAdd}>
+                        <form className='form' onSubmit={props.handleAdd}>
                             <input
                                 className='input-addtodo'
                                 onChange={props.handleNewTodo}
@@ -34,7 +34,7 @@ const TodoComponent = (props) => {
                                 type='text'
                                 id='text'
                             />
-                            <label htmlFor='text'></label>
+                            
                             <button className='input-button' type="submit" >
                                 Add Todo
                             </button>
