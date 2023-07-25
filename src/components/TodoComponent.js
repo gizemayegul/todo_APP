@@ -26,7 +26,7 @@ const TodoComponent = (props) => {
             <div className='input-container'>
                 {props.showTodo && (
                     <div>
-                        <form onSubmit={props.handleAdd}>
+                        <form  onSubmit={props.handleAdd}>
                             <input
                                 className='input-addtodo'
                                 onChange={props.handleNewTodo}

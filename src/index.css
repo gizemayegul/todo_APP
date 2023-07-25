@@ -163,15 +163,22 @@ code {
     
     
   }
+
+  .form{
+    display: flex;
+    align-content: center;
+    justify-content: flex-start;
+  }
   .input-addtodo{
-    height: 5vh;
+    width: 70%;
     padding: 0.25rem;
+    height: 6vh;
    
 
   }
   .input-button{
     font-size: 0.8rem;
-    width: 12vw;
+    width: 20%;
     height: 6vh;
     margin-left: 0;
     font-weight: bolder;
